@@ -1,9 +1,3 @@
-'''
-Test Suite = http://lnxtestrail.ibi.com/testrail//index.php?/suites/view/20072&group_by=cases:section_id&group_id=514336&group_order=asc
-Test Case = http://lnxtestrail.ibi.com/testrail//index.php?/cases/view/6691702
-TestCase Name = Percent, Negative Bracket
-'''
-
 import unittest, time
 from common.lib.basetestcase import BaseTestCase
 from common.wfcomponent import dataformatdialog
