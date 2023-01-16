@@ -1,0 +1,36 @@
+{
+  "name": "Playwright_Automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "automation promise",
+    "async automation",
+    "automation",
+    "playwright automation",
+    "gui automation",
+    "gui testing",
+    "automation testing"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git"
+  },
+  "dependencies": {
+    "jest-html-reporter": "^3.1.3",
+    "playwright": "1.0.2"
+  },
+  "devDependencies": {
+    "chalk": "^3.0.0",
+    "jest": "^25.5.4",
+    "mkdirp": "1.0.4",
+    "eslint": "7.0.0",
+    "husky": "4.2.5"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "description": "GUI testing framework"
+}
