@@ -3,7 +3,7 @@ import { TESTRAILDATA } from './testRailConstants'
 const dotenv = require('dotenv').config({ path: `.env.automation` })
 const TRUSER: any = process.env.TRUSER
 const TRPASSWORD: any = process.env.TRPASSWORD
-console.log(TRUSER)
+
 const testRailClient: TestrailApiClient = new TestrailApiClient({
   host: TESTRAILDATA.hostName,
   user: TRUSER,

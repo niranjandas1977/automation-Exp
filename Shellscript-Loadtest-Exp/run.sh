@@ -1,43 +1,51 @@
 #!/bin/bash
 
-
-CLASS_URL_DEFAULT=https://xxxxxx
+CLASS_URL_DEFAULT=https://xxxxxxxxx
 CLASS_URL="${CLASS_URL:=$CLASS_URL_DEFAULT}"
 SHARE_LOAD_AUDIO_DEFAULT=true
 SHARE_LOAD_AUDIO="${SHARE_LOAD_AUDIO:=$SHARE_LOAD_AUDIO_DEFAULT}"
 SHARE_LOAD_VIDEO_DEFAULT=true
 SHARE_LOAD_VIDEO="${SHARE_LOAD_VIDEO:=$SHARE_LOAD_VIDEO_DEFAULT}"
-SHOW_ACTIVITY_DEFAULT=true
-SHOW_ACTIVITY="${SHOW_ACTIVITY:=$SHOW_ACTIVITY_DEFAULT}"
-SHOW_VIDEO_DEFAULT=true
-SHOW_VIDEO="${SHOW_VIDEO:=$SHOW_VIDEO_DEFAULT}"
 
-TASK_SLEEP_DEFAULT=0.25
+TASK_SLEEP_DEFAULT=1
+# TASK_SLEEP_DEFAULT=0.1
 TASK_SLEEP="${TASK_SLEEP:=$TASK_SLEEP_DEFAULT}"
 
-PASSWORD_DEFAULT='xxxxx'
+PASSWORD_DEFAULT='xxxxxx'
 PASSWORD="${PASSWORD:=$PASSWORD_DEFAULT}"
 
 START=$1
-START="${START:=0}"
+START="${START:=5001}"
 
 COUNT=$2
-COUNT="${COUNT:=300}"
+COUNT="${COUNT:=100}"
 END=$START+$COUNT-1
 
-EMAIL_BASENAME_DEFAULT='xxxxx'
+EMAIL_BASENAME_DEFAULT='xxxxxxxx'
 EMAIL_BASENAME="${EMAIL_BASE:=$EMAIL_BASENAME_DEFAULT}"
 
-EMAIL_DOMAIN=@xxxx.xxxx
+EMAIL_DOMAIN=@xxxx.com
+
+let LIMIT=$START+64
 
 for (( i=$START; i<=$END; i++ ))
 do
     USERNAME=$EMAIL_BASENAME$i$EMAIL_DOMAIN
 
-    FULL_URL=$CLASS_URL\?shareloadvideo=$SHARE_LOAD_VIDEO\&shareloadaudio=$SHARE_LOAD_AUDIO\&showactivity=$SHOW_ACTIVITY\&showvideo=$SHOW_VIDEO\&password=$PASSWORD\&username=$USERNAME
-    # echo $FULL_URL showactivity=true
+    if [ $i -lt $LIMIT ]
+    then
+        FULL_URL=$CLASS_URL\?video=true\&audio=true\&password=$PASSWORD\&username=$USERNAME
+    else
+        FULL_URL=$CLASS_URL\?video=false\&audio=false\&password=$PASSWORD\&username=$USERNAME
+    fi
 
+    echo $i $FULL_URL
     ./launch.sh $FULL_URL $i
+
+    sleep $TASK_SLEEP
+
+    echo $(ps aux | grep chrome | wc -l)
 done
 
-sleep $TASK_SLEEP
+sleep 10
+echo $(ps aux | grep chrome | wc -l)
