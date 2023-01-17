@@ -9,11 +9,11 @@ function validate_args() {
     if (process.argv.length != 4) {
       throw new Error("Total number of arguments should be 4");
     }
-    let supportiveEnvNameList = ['localhost', 'stg', 'dev'];
+    let supportiveEnvNameList = ['localhost', 'stage', 'dev'];
     if (! supportiveEnvNameList.includes(envName)) {
-      throw new Error("second argument must be environment name from ['localhost', 'stg', 'dev'].");
+      throw new Error("second argument must be environment name from ['localhost', 'stage', 'dev'].");
     }
-    let supportiveClientList = ['HOTIZON', 'JOURNI', 'SURA'];
+    let supportiveClientList = ['XXXXX', 'YYYY', 'ZZZZ'];
     if (! supportiveClientList.includes(clientName)) {
       throw new Error("Third argument name should be client name from ['clientName1', 'clientName2', 'clientName3'].");
     }
@@ -37,7 +37,7 @@ async function execute(test) {
 
 async function main() {
 
-let tests = ['testchat', 'testmembers', 'testhandoff'];
+let tests = ['testfeature1', 'testfeature2', 'testfeature3'];
 for (test of tests) {
     console.log(chalk.green('Test for '+ test + 'started.'));
     await execute(test);
