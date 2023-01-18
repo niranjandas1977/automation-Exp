@@ -1,11 +1,11 @@
 #!/bin/bash
 
-CLASS_URL_DEFAULT=https://xxxxxxxxx
-CLASS_URL="${CLASS_URL:=$CLASS_URL_DEFAULT}"
-SHARE_LOAD_AUDIO_DEFAULT=true
-SHARE_LOAD_AUDIO="${SHARE_LOAD_AUDIO:=$SHARE_LOAD_AUDIO_DEFAULT}"
-SHARE_LOAD_VIDEO_DEFAULT=true
-SHARE_LOAD_VIDEO="${SHARE_LOAD_VIDEO:=$SHARE_LOAD_VIDEO_DEFAULT}"
+MAIN_URL_DEFAULT=https://xxxxxxxxx
+MAIN_URL="${MAIN_URL:=$MAIN_URL_DEFAULT}"
+AUDIO_DEFAULT=true
+AUDIO="${AUDIO:=$AUDIO_DEFAULT}"
+VIDEO_DEFAULT=true
+VIDEO="${VIDEO:=$VIDEO_DEFAULT}"
 
 TASK_SLEEP_DEFAULT=1
 # TASK_SLEEP_DEFAULT=0.1
@@ -34,9 +34,9 @@ do
 
     if [ $i -lt $LIMIT ]
     then
-        FULL_URL=$CLASS_URL\?video=true\&audio=true\&password=$PASSWORD\&username=$USERNAME
+        FULL_URL=$MAIN_URL\?video=true\&audio=true\&password=$PASSWORD\&username=$USERNAME
     else
-        FULL_URL=$CLASS_URL\?video=false\&audio=false\&password=$PASSWORD\&username=$USERNAME
+        FULL_URL=$MAIN_URL\?video=false\&audio=false\&password=$PASSWORD\&username=$USERNAME
     fi
 
     echo $i $FULL_URL
